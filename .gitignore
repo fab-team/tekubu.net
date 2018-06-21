@@ -36,5 +36,6 @@ Gemfile.lock
 unicorn.rake
 unicorn.rb
 
+Vagrantfile
 .vagrant
 *.sql
