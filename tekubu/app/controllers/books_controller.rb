@@ -7,54 +7,6 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     # @entries = @user.entries
-
-    amazon = Amazon::Ecs.item_search(
-      # キーワードを指定
-      @book.asin,
-      :response_group => 'Large',
-      :search_index => 'All',
-      :country => 'jp'
-    )
-
-    amazon.is_valid_request?
-    amazon.has_error?
-    amazon.error
-    amazon.total_pages
-    amazon.total_results
-    amazon.item_page
-
-    amazon.items.each do |item|
-      item_attributes = item.get_element('ItemAttributes')
-      item_attrireviews = item.get_element('EditorialReviews')
-
-      item.get('ASIN')
-
-      # タイトル
-      $title = item.get('ItemAttributes/Title')
-
-      # 発売日
-      $releaseDate = item.get('ItemAttributes/PublicationDate')
-
-      # 著者
-      $author = item.get('ItemAttributes/Author')
-
-      # アマゾン商品URL
-      $amazonUrl = item.get('DetailPageURL')
-
-      # 商品内容
-      $amazonText = item.get('EditorialReviews/EditorialReview/Content')
-
-      # 言語
-      $languages = item.get('ItemAttributes/Languages/Language/Name')
-
-      # 画像
-      # LargeImageの下の階層を取得する場合 /LargeImage/URL
-      $images = item.get('LargeImage/URL')
-      # puts item.get_element("Author")
-
-      sleep(1)
-    end
-    # puts amazon.marshal_dump
   end
 
 

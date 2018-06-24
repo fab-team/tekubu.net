@@ -22,8 +22,8 @@ doc/
 .secret
 secret.key
 node_modules/
-na-nda.sublime-workspace
-na-nda.sublime-project
+*.sublime-workspace
+*.sublime-project
 
 .htaccess
 .htpasswd
@@ -39,3 +39,4 @@ unicorn.rb
 Vagrantfile
 .vagrant
 *.sql
+

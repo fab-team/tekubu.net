@@ -1,81 +1,25 @@
 <% if @books.present? %>
 <% @books.each do |book| %>
 
-<%=
-Amazon::Ecs.debug = false
-Amazon::Ecs.options = {
-	:associate_tag => ENV["AWS_USER_ID"],
-	:AWS_access_key_id => ENV["AWS_ACCESS_KEY"],
-	:AWS_secret_key => ENV["AWS_SECRET_KEY"]
-}
-
-amazon = Amazon::Ecs.item_search(
-    # キーワードを指定
-    book.asin,
-    :response_group => 'Large',
-    :search_index => 'All',
-    :country => 'jp'
-    )
-
-amazon.is_valid_request?
-amazon.has_error?
-amazon.error
-amazon.total_pages
-amazon.total_results
-amazon.item_page
-
-amazon.items.each do |item|
-	item_attributes = item.get_element('ItemAttributes')
-	item_attrireviews = item.get_element('EditorialReviews')
-
-	item.get('ASIN')
-
-	# タイトル
-	$title = item.get('ItemAttributes/Title')
-
-	# 発売日
-	$releaseDate = item.get('ItemAttributes/PublicationDate')
-
-	# 著者
-	$author = item.get('ItemAttributes/Author')
-
-	# アマゾン商品URL
-	$amazonUrl = item.get('DetailPageURL')
-
-	# 商品内容
-	$amazonText = item.get('EditorialReviews/EditorialReview/Content')
-
-	# 言語
-	$languages = item.get('ItemAttributes/Languages/Language/Name')
-
-	# 画像
-	# LargeImageの下の階層を取得する場合 /LargeImage/URL
-	$images = item.get('LargeImage/URL')
-	# puts item.get_element("Author")
-
-	sleep(10)
-end
-puts amazon.marshal_dump
-%>
-
 <div class="c-box">
 	<p><%= book.event_id %></p>
 	<div class="c-text--small" style="color: gray;margin-bottom: 8px;font-weight: bold">POST ID&nbsp;/&nbsp;<%= book.id %></div>
-	<div class="c-text--small" style="color: gray;margin-bottom: 8px;"><%#= book.post_created.strftime("%Y年%m月%d日 %H:%M:%S") %></div>
-	<h2 style="font-size: 1.4rem;font-weight: bold;letter-spacing: 0.02em;"><a href="<%= $amazonUrl %>" target="_blank"><%= $title %></a></h2>
-	<img src="<%= $images %>">
-	<p><%= simple_format($amazonText) %></p>
-	発売日：<%= $releaseDate %><br>
-	言語：<%= $languages %><br>
+	<h2 style="font-size: 1.4rem;font-weight: bold;letter-spacing: 0.02em;"><a href="<%= book.detailpageurl %>" target="_blank"><%= book.title %></a></h2>
+	<img src="<%= book.image %>">
+	<p><%= book.content %></p>
+	著者：<%= book.author %><br>
+	発売日：<%= book.publicationdate %><br>
+	言語：<%= book.language %><br>
 	カウント数：<%= book.post_count %><br>
 
-	<% book.events.each do |event| %>
+	<% book.events.first(3).each do |event| %>
 	<p><a href="<%= event.url %>" target="_blank"><%= event.title %></a></p>
 	<% end %>
 </div>
 <%= link_to "もっと読む", book %>
 <br>
 <% end %>
+
 <%= will_paginate @books, :class => 'p-pager' %>
 <% else %>
 <p>記事がありません。</p>
