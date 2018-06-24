@@ -1,17 +1,15 @@
 <div class="c-box">
 	<p><%= @book.event_id %></p>
 	<div class="c-text--small" style="color: gray;margin-bottom: 8px;font-weight: bold">POST ID&nbsp;/&nbsp;<%= @book.id %></div>
-	<div class="c-text--small" style="color: gray;margin-bottom: 8px;"><%#= @book.post_created.strftime("%Y年%m月%d日 %H:%M:%S") %></div>
-	<h2 style="font-size: 1.4rem;font-weight: bold;letter-spacing: 0.02em;"><a href="<%= $amazonUrl %>" target="_blank"><%= $title %></a></h2>
+	<h2 style="font-size: 1.4rem;font-weight: bold;letter-spacing: 0.02em;"><a href="<%= @book.detailpageurl %>" target="_blank"><%= @book.title %></a></h2>
 	<img src="<%= $images %>">
-	<p><%= simple_format($amazonText) %></p>
-	発売日：<%= $releaseDate %><br>
-	言語：<%= $languages %><br>
+	<p><%= @book.content %></p>
+	著者：<%= @book.author %><br>
+	発売日：<%= @book.publicationdate %><br>
+	言語：<%= @book.language %><br>
 	カウント数：<%= @book.post_count %><br>
 
 	<% @book.events.each do |event| %>
 	<p><a href="<%= event.url %>" target="_blank"><%= event.title %></a></p>
 	<% end %>
 </div>
-<% else %>
-<p>記事がありません。</p>

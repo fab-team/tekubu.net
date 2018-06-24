@@ -1,9 +1,8 @@
 class HomeController < ApplicationController
   def index
     # @books = Book.all.reverse_order.order(id: :desc).paginate(page: params[:page], per_page: 20)
-    @books = Book.all.includes(:events).paginate(page: params[:page], per_page: 5)
+    @books = Book.where.not(asin: nil).includes(:events).paginate(page: params[:page], per_page: 5)
     logger.debug(@books)
-    # @events = @books.events
   end
 
   def show
