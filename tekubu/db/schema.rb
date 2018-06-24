@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180617135021) do
+ActiveRecord::Schema.define(version: 20180624093259) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "event_id"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20180617135021) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "post_count", default: 0, null: false
+    t.string "title"
+    t.string "publicationdate"
+    t.string "author"
+    t.string "detailpageurl"
+    t.text "content"
+    t.string "language"
+    t.string "image"
   end
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
