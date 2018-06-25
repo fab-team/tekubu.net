@@ -2,12 +2,25 @@
 	<p><%= @book.event_id %></p>
 	<div class="c-text--small" style="color: gray;margin-bottom: 8px;font-weight: bold">POST ID&nbsp;/&nbsp;<%= @book.id %></div>
 	<h2 style="font-size: 1.4rem;font-weight: bold;letter-spacing: 0.02em;"><a href="<%= @book.detailpageurl %>" target="_blank"><%= @book.title %></a></h2>
-	<img src="<%= $images %>">
-	<p><%= @book.content %></p>
-	著者：<%= @book.author %><br>
-	発売日：<%= @book.publicationdate %><br>
-	言語：<%= @book.language %><br>
-	カウント数：<%= @book.post_count %><br>
+	<% if @book.image.present? %>
+	<img src="<%= @book.image %>">
+	<% end %>
+
+	<p>
+		<% if @book.content.present? %>
+		<%= @book.content %>
+		<% end %>
+		<% if @book.author.present? %>
+		著者：<%= @book.author %><br>
+		<% end %>
+		<% if @book.publicationdate.present? %>
+		発売日：<%= @book.publicationdate %><br>
+		<% end %>
+		<% if @book.language.present? %>
+		言語：<%= @book.language %><br>
+		<% end %>
+		カウント数：<%= @book.post_count %>
+	</p>
 
 	<% @book.events.each do |event| %>
 	<p><a href="<%= event.url %>" target="_blank"><%= event.title %></a></p>
