@@ -3,9 +3,6 @@ class EventController < ApplicationController
   # 新規登録フォーム
   def new
     @event = Event.new(created_at: Time.current)
-    # @all_tag_list = ActsAsTaggableOn::Tag.for_context(:sex_list).pluck(:name)
-    # @all_tag_list = ActsAsTaggableOn::Tag.for_context(:sex_list).pluck(:name)
-    # @all_tag_list = ActsAsTaggableOn::Tag.for_context(:sex_list)
   end
 
   # 編集
