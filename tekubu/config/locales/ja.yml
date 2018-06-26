@@ -50,4 +50,17 @@ ja:
     previous_label: "前"
     next_label: "次"
     page_gap: "…"
-
+  meta_tags:
+    base:
+      site: Qiitaの新着投稿を表示するサイト｜Tekubu（テクブ）
+      description: Qiitaの投稿記事に紹介されている本の情報をまとめて紹介するサイト「Tekubu」（テクブ）。プログラミングに関する知識を記録・共有するためのサービスQiitaに投稿している記事数をカウントしておすすめの本をご紹介します。
+      keywords:
+        - サービス
+        - 技術書
+        - Tekubu
+        - テクブ
+        - 本
+        - プログラミング
+    titles:
+      posts:
+        index: 記事一覧
