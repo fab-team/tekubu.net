@@ -6,9 +6,8 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    # @entries = @user.entries
+    prepare_meta_tags(title: @book.title,description: @book.title + "の紹介ページ。Qiitaの投稿記事に紹介されている本の情報をまとめて紹介するサイト「Tekubu」（テクブ）。プログラミングに関する知識を記録・共有するためのサービスQiitaに投稿している記事数をカウントしておすすめの本をご紹介します。" )
   end
-
 
   def search
     if params[:keyword].present?
