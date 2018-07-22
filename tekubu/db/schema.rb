@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180624093259) do
+ActiveRecord::Schema.define(version: 20180722191659) do
 
-  create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "event_id", null: false
-    t.string "url", limit: 2083, null: false
+    t.string "url", null: false
     t.string "url_hash", null: false
     t.string "asin"
     t.integer "taggings_count"
@@ -23,17 +23,17 @@ ActiveRecord::Schema.define(version: 20180624093259) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "post_count", default: 0, null: false
-    t.string "title", limit: 2083
+    t.string "title"
     t.string "publicationdate"
     t.string "author"
-    t.string "detailpageurl", limit: 2083
+    t.string "detailpageurl"
     t.text "content"
-    t.string "language", default: "日本語"
+    t.string "language"
     t.string "image"
     t.index ["event_id"], name: "index_books_on_event_id"
   end
 
-  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "book_id", null: false
     t.string "title", null: false
     t.string "url", null: false
@@ -46,13 +46,22 @@ ActiveRecord::Schema.define(version: 20180624093259) do
     t.index ["book_id"], name: "index_events_on_book_id"
   end
 
-  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "event_id", null: false
     t.bigint "book_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_posts_on_book_id"
     t.index ["event_id"], name: "index_posts_on_event_id"
+  end
+
+  create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "event_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_taggings_on_book_id"
+    t.index ["event_id"], name: "index_taggings_on_event_id"
   end
 
 end
