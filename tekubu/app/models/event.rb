@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+  has_many :books, through: :taggings
+  has_many :taggings, dependent: :destroy
+
 	belongs_to :book, class_name: "Book", foreign_key: "book_id"
   counter_culture :book
 
