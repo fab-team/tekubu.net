@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180624093259) do
+ActiveRecord::Schema.define(version: 20180723103043) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "event_id", null: false
@@ -53,6 +53,11 @@ ActiveRecord::Schema.define(version: 20180624093259) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_posts_on_book_id"
     t.index ["event_id"], name: "index_posts_on_event_id"
+  end
+
+  create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "book_id"
+    t.integer "event_id"
   end
 
 end
