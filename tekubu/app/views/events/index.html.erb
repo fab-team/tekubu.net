@@ -2,7 +2,6 @@
 <% @events.each do |event| %>
 <article class="p-article c-talk--right">
 	<p class="c-talk__name"><%= event.title %></p>
-	<p class="c-talk__name"><%= event.dictionary_list %></p>
 
 	<ul class="p-article__bottom c-text--midium">
 		<li>
@@ -22,4 +21,6 @@
 <li><%= tag.id %> <%= tag.name %></li>
 <% end %>
 
-<%#= render @tags %>
+<% @tagpost.each do |item| %>
+<li><%= item.id %> <%= item.name %> カウント：<%= item.taggings_count %></li>
+<% end %>

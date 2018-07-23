@@ -1,0 +1,94 @@
+<%= render "shared/errors", obj: @event %>
+
+<div class="p-form">
+
+    <div class="p-form__item">
+      <div class="p-form__heading">
+        <%= form.label :title %><span class="p-form__tag--important">必須</span>
+      </div>
+      <div class="p-form__date">
+        <%= form.text_field :title%>
+      </div>
+    </div>
+
+    <div class="p-form__item">
+      <div class="p-form__heading">
+        <%= form.label :book_id, 'book_id' %>
+      </div>
+      <div class="p-form__date">
+        <%= form.text_field :book_id%>
+      </div>
+    </div>
+
+    <div class="p-form__item">
+      <div class="p-form__heading">
+        <%= form.label :url, 'URL' %>
+      </div>
+      <div class="p-form__date">
+        <%= form.text_field :url%>
+      </div>
+    </div>
+
+    <div class="p-form__item">
+      <div class="p-form__heading">
+        <%= form.label :url_hash, 'url_hash' %>
+      </div>
+      <div class="p-form__date">
+        <%= form.text_field :url_hash%>
+      </div>
+    </div>
+
+    <div class="p-form__item">
+      <div class="p-form__heading">
+        <%= form.label :content %>
+      </div>
+      <div class="p-form__date">
+        <%= form.text_area :content%>
+      </div>
+    </div>
+
+    <div class="p-form__item">
+      <div class="p-form__heading">
+        <%= form.label :dictionary_list, 'タグ（本）をカンマ区切りで入力' %>
+      </div>
+      <div class="p-form__date">
+        <%= form.text_field :dictionary_list%>
+      </div>
+    </div>
+
+
+    <div class="p-form__item">
+      <div class="p-form__heading">
+        <%= form.label :post_created, for: "entry_posted_at_1i" %>
+      </div>
+      <div class="p-form__date">
+        <%= form.datetime_select :post_created,
+        start_year: 2000, end_year: Time.now.year + 1,
+        use_month_numbers: true %>
+      </div>
+    </div>
+
+    <div class="p-form__item">
+      <div class="p-form__heading">
+        <%= form.label :post_updated, for: "entry_posted_at_1i" %>
+      </div>
+      <div class="p-form__date">
+        <%= form.datetime_select :post_updated,
+        start_year: 2000, end_year: Time.now.year + 1,
+        use_month_numbers: true %>
+      </div>
+    </div>
+
+    <div class="p-form__item">
+      <div class="p-form__heading">
+        <%= form.label :created_at, for: "entry_posted_at_1i" %>
+      </div>
+      <div class="p-form__date">
+        <%= form.datetime_select :created_at,
+        start_year: 2000, end_year: Time.now.year + 1,
+        use_month_numbers: true %>
+      </div>
+    </div>
+
+
+  </div>

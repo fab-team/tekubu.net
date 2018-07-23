@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get "about" => "home#about", as: "about"
 
   resources :books, :only => [:index, :show]
+  resources :events
+
+  get 'tags/:tag', to: 'events#index', as: :tag
 
   # get 'home#show'
 end
