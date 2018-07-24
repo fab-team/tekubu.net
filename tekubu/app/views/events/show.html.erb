@@ -1,0 +1,11 @@
+<article class="p-article c-talk--right">
+	<%= @event.id %>
+	<%= @event.title %>
+	<%= @event.dictionary_list %>
+	<%#= @event.find_related_dictionary %>
+
+<%#= render 'dictionary', event: @event.find_related_dictionary %>
+
+<h2><%= "Tag:#{params[:tag_name]}" %></h2>
+<%= @event %>
+</article>

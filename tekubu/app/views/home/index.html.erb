@@ -1,36 +1,21 @@
 <% if @books.present? %>
 <% @books.each do |book| %>
-
-<div class="c-box">
+<article class="p-article c-box">
 	<div class="c-text--small" style="color: gray;margin-bottom: 8px;font-weight: bold">POST ID&nbsp;/&nbsp;<%= book.id %></div>
 	<h2 style="font-size: 1.4rem;font-weight: bold;letter-spacing: 0.02em;"><a href="<%= book.detailpageurl %>" target="_blank"><%= book.title %></a></h2>
-	<img src="<%= book.image %>">
-	<p>
-		<% if book.content.present? %>
-		<%= book.content %>
-		<% end %>
-		<% if book.author.present? %>
-		著者：<%= book.author %><br>
-		<% end %>
-		<% if book.publicationdate.present? %>
-		発売日：<%= book.publicationdate %><br>
-		<% end %>
-		<% if book.language.present? %>
-		言語：<%= book.language %><br>
-		<% end %>
-		カウント数：<%= book.post_count %>
-	</p>
 
-	<% book.events.first(5).each do |event| %>
-	<p><a href="<%= event.url %>" target="_blank"><%= event.title %></a></p>
-	<% end %>
-</div>
-<%= link_to "もっと読む", book %>
-<br>
+	<p class="c-talk__name"><%= book.title %></p>
+	<p class="c-talk__name"><%= book.dictionary_list %></p>
+
+	<ul class="p-article__bottom c-text--midium">
+		<li>
+			<%= link_to "詳細へ", book %>
+		</li>
+	</ul>
+
+</article>
 <% end %>
-
 <%= will_paginate @books, :class => 'p-pager' %>
 <% else %>
 <p>記事がありません。</p>
 <% end %>
-

@@ -1,0 +1,43 @@
+<% if @events.present? %>
+<% @events.each do |event| %>
+<article class="p-article c-talk--right">
+	<p class="c-talk__name"><%= event.title %></p>
+
+	<ul class="p-article__bottom c-text--midium">
+		<li>
+			<%= link_to "もっと読む", event %>
+		</li>
+	</ul>
+
+<% event.dictionary_list.each do |item| %>
+<span class="label label-primary"><%= item %></span><br>
+<% end %>
+
+<% event.dictionary_counts.each do |item| %>
+<span class="label label-primary"><%= item.id %></span><br>
+<% end %>
+
+
+</article>
+<br><br>
+	<%# event.find_related_dictionary.each do |item| %>
+	<!-- <p style="color:red;"><%#= item.title %></p> -->
+	<%# end %>
+
+<% end %>
+<%#= will_paginate @events, :class => 'p-pager' %>
+<% else %>
+<p>記事がありません。</p>
+<% end %>
+
+
+
+<%#= @events.find_related_dictionary %>
+
+<% @tags.each do |tag| %>
+<li><%= tag.id %> <%= tag.name %></li>
+<% end %>
+
+<% @tagpost.each do |item| %>
+<li><%= item.id %> <%= item.name %> カウント：<%= item.taggings_count %></li>
+<% end %>
