@@ -4,7 +4,6 @@ class Event < ApplicationRecord
   acts_as_taggable_on :dictionary
   acts_as_taggable
 
-
   class << self
     def status_text(status)
       I18n.t("activerecord.attributes.entry.status_#{status}")

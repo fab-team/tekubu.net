@@ -10,12 +10,12 @@ class EventsController < ApplicationController
       @events = Event.all
       @tags = Event.all_tags
       @tagpost = Event.tags_on(:dictionary)
-      @bobby = Event.tagged_with(@tagpost.name)
+      # @bobby = Event.tagged_with(@tagpost.name)
 
       p "tagpost=========================================="
-      p @tagpost
+      # p @tagpost
       p "bobby=========================================="
-      p @bobby
+      # p @bobby
       p "//bobby=========================================="
     end
   end
