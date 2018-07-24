@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root 'home#index'
   get "about" => "home#about", as: "about"
 
-  resources :books, :only => [:index, :show]
+  # resources :books, :only => [:index, :show]
+  resources :books
   resources :events
 
   get 'tags/:tag', to: 'events#index', as: :tag

@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180723112913) do
+ActiveRecord::Schema.define(version: 20180724164355) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.bigint "event_id", null: false
-    t.string "url", null: false
-    t.string "url_hash", null: false
+    t.bigint "event_id"
+    t.string "url"
+    t.string "url_hash"
     t.string "asin"
     t.integer "taggings_count"
-    t.string "post_created", null: false
-    t.string "post_updated", null: false
+    t.string "post_created"
+    t.string "post_updated"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "post_count", default: 0, null: false
@@ -77,6 +77,10 @@ ActiveRecord::Schema.define(version: 20180723112913) do
   create_table "tags", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name", collation: "utf8_bin"
     t.integer "taggings_count", default: 0
+    t.string "title"
+    t.string "url"
+    t.string "url_hash"
+    t.text "content"
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 

@@ -1,25 +1,21 @@
-<% if @events.present? %>
-<% @events.each do |event| %>
-<article class="p-article c-talk--right">
-	<p class="c-talk__name"><%= event.title %></p>
-	<p class="c-talk__name"><%= event.dictionary_list %></p>
+<% if @books.present? %>
+<% @books.each do |book| %>
+<article class="p-article c-box">
+	<div class="c-text--small" style="color: gray;margin-bottom: 8px;font-weight: bold">POST ID&nbsp;/&nbsp;<%= book.id %></div>
+	<h2 style="font-size: 1.4rem;font-weight: bold;letter-spacing: 0.02em;"><a href="<%= book.detailpageurl %>" target="_blank"><%= book.title %></a></h2>
+
+	<p class="c-talk__name"><%= book.title %></p>
+	<p class="c-talk__name"><%= book.dictionary_list %></p>
 
 	<ul class="p-article__bottom c-text--midium">
 		<li>
-			<%= link_to "もっと読む", event %>
+			<%= link_to "詳細へ", book %>
 		</li>
 	</ul>
 
 </article>
 <% end %>
-<%#= will_paginate @events, :class => 'p-pager' %>
+<%= will_paginate @books, :class => 'p-pager' %>
 <% else %>
 <p>記事がありません。</p>
-
 <% end %>
-
-<% @tags.each do |tag| %>
-<li><%= tag.id %> <%= tag.name %></li>
-<% end %>
-
-<%#= render @tags %>
