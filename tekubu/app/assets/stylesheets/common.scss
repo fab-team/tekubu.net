@@ -725,7 +725,6 @@ component
     width: 50%;
     display: table;
     border: 1px solid $darkgrayEE;
-    width: 100%;
     @include fontsize(12);
 
     &__headline {
