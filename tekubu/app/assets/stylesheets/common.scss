@@ -337,7 +337,19 @@ common
   color: #010101;
   padding-top: 8px;
   padding-bottom: 8px;
+  width: 80%;
+  margin: 0 auto;
+
+  a {
+    display: block;
+    width: 100%;
+  }
 }
+
+.p-header__logo__cap {
+  display: block;
+}
+
 
 .p-header__list {
   border-right: 1px solid #F9F9F9;
@@ -394,6 +406,7 @@ common
   top: 14px;
   left: 14px;
   cursor: pointer;
+  z-index: 10;
 }
 
 .p-header__count {
@@ -401,11 +414,6 @@ common
   font-weight: bold;
   color: $darkgray9B;
 }
-
-.p-header__logo__cap {
-  display: block;
-}
-
 
 .p-content {
   background: #F9F9F9;
