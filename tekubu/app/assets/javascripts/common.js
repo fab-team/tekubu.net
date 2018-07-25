@@ -2,7 +2,7 @@
 // You can generate new channels where WebSocket features live using the `rails generate channel` command.
 //
 
-$(function () {
+$(document).on('turbolinks:load', function() {
 	$('.p-header__menu__btn').on('click', function (event) {
 		if (!$(this).hasClass('is_active')) {
 			$(this).addClass('is_active');
@@ -12,9 +12,6 @@ $(function () {
 			$('.p-header__menu').fadeOut();
 		}
 	});
-
-    var hoge = $('.c-box__title').text();
-    console.log(hoge);
 
   /*-----------------------------------
    * twitter
