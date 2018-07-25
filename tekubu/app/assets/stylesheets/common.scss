@@ -704,7 +704,7 @@ component
   }
 
   &__title {
-    @include fontsize(14);
+    @include fontsize(16);
     font-weight: bold;
     letter-spacing: 0.02em;
   }
@@ -725,20 +725,22 @@ component
     width: 50%;
     display: table;
     border: 1px solid $darkgrayEE;
-    @include fontsize(12);
+    @include fontsize(10);
 
     &__headline {
       display: block;
       border-bottom: 1px solid $darkgrayEE;
       background:transparent url('image.png') left top no-repeat;
       width: 100%;
-      padding: 8px;
+      padding: 4px;
+      border-top: 1px solid #EEE;
+      background: #eee;
     }
 
     &__data {
       display: block;
       width: 100%;
-      padding: 8px;
+      padding: 4px;
     }
   }
   &__text {
