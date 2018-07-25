@@ -13,6 +13,9 @@ $(function () {
 		}
 	});
 
+    var hoge = $('.c-box__title').text();
+    console.log(hoge);
+
   /*-----------------------------------
    * twitter
    -----------------------------------*/
@@ -33,8 +36,8 @@ $(function () {
     // URLを取得
     var protocol = location.protocol;
     var host = location.host;
-    var title = $(this).find('.c-box__title').text();
-    var talkUrl = $(this).find('.c-box__link').text();
+    var title = $(this).find('.c-button__sns__title').text();
+    var talkUrl = $(this).find('.c-button__sns__link').text();
     var snsUrl = encodeURIComponent(host + talkUrl);
     console.log(title);
 
@@ -43,7 +46,11 @@ $(function () {
     //   description += $slot_txt[i].text() + '\n';
     // }
 
-    description += $(this).find('.c-box__link').text();
+    description += 'オススメのプログラミング本';
+    description += '\n';
+    description += '「';
+    description += $(this).find('.c-button__sns__title').text();
+    description += '」';
     description += '\n\n';
 
     if (typeof window.screenLeft !== 'undefined') {
@@ -69,7 +76,7 @@ $(function () {
     top = windowHeight / 2 - popupHeight / 2 + dualScreenTop;
 
 
-    href = 'http://twitter.com/share?url=http://' + snsUrl + '&text=' + encodeURIComponent(description) + '&hashtags=' + encodeURIComponent('テクブ') + ',' + encodeURIComponent('プログラミング') + ',' + encodeURIComponent('プログラミング本のおすすめをご紹介');
+    href = 'http://twitter.com/share?url=http://' + snsUrl + '&text=' + encodeURIComponent(description) + '&hashtags=' + encodeURIComponent('Tekubu') + ',' + encodeURIComponent('プログラミング') + ',' + encodeURIComponent('オススメのプログラミング本をご紹介');
 
     window.open(href, 'twitter', 'width=' + popupWidth + ', height=' + popupHeight + ', top=' + top + ', left=' + left);
   });

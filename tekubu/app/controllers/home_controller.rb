@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     # @books = Book.all.includes(:events).paginate(page: params[:page], per_page: 10)
     # @books = Event.where.not(title: nil).includes(:events).paginate(page: params[:page], per_page: 10)
     # @tags = Event.all_tags
-    @books = Book.all.paginate(page: params[:page], per_page: 10)
+    @books = Book.where.not(title: nil).paginate(page: params[:page], per_page: 10)
     @tags = Book.all_tags
   end
 

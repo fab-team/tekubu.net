@@ -1,10 +1,51 @@
 <header class="p-header">
 	<div class="p-header__inner">
-		<div class="p-header__logo">
-			<%= link_to "Tekubu", root_path %>
-			<span class="p-header__logo__cap c-text--small">&ensp;-エンジニアにおすすめの本を紹介するサイト-</span>
+
+		<% if current_page?(root_path) %>
+
+		<h1 class="p-header__logo">
+			<%= link_to root_path do %>
+			<span class="p-header__logo__text">Tekubu</span>
+			<span class="p-header__logo__cap c-text--small">&ensp;-エンジニア・プログラマーにおすすめの本を紹介するサイト-</span>
+			<% end %>
+		</h1>
+		<% else	%>
+		<p class="p-header__logo">
+			<%= link_to root_path do %>
+			<span class="p-header__logo__text">Tekubu</span>
+			<span class="p-header__logo__cap c-text--small">&ensp;-エンジニア・プログラマーにおすすめの本を紹介するサイト-</span>
+			<% end %>
+		</p>
+		<% end %>
+
+		<div class="p-header__menu__btn">
+			<i class="fas fa-list-ul"></i>
+		</div>
+		<ul class="p-header__menu">
+			<li>
+				<%= link_to "TOP", root_path %>
+			</li>
+			<li>
+				<%= link_to "Tekubu（テクブ）について", about_path %>
+			</li>
+			<li>
+				<a href="https://twitter.com/Tekubu_net" target="_blank">公式Twitter</a>
+			</li>
+		</ul>
+
+		<div class="p-header__count">
+			掲載書籍数&nbsp;/&nbsp;<%= Book.where.not(title: nil).count %>
 		</div>
 	</div>
+
+<!-- <div class="p-header__item">
+	<%#= link_to "イベント一覧", events_path %>
+</div>
+
+<div class="p-header__item">
+	<%#= link_to "book一覧", books_path %>
+</div>
+ -->
 </header>
 
 <div class="p-add">
@@ -22,10 +63,3 @@
 	</div>
 </div>
 
-<div class="p-header__item">
-	<%= link_to "イベント一覧", events_path %>
-</div>
-
-<div class="p-header__item">
-	<%= link_to "book一覧", books_path %>
-</div>
