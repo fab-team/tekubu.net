@@ -16,6 +16,10 @@ variables
 
  */
 
+ $darkgray31: #313131;
+ $darkgray9B: #9B9B9B;
+ $darkgrayEE: #EEE;
+
 
 /*
 
@@ -362,13 +366,44 @@ common
 
 .p-header__menu {
   display: none;
+  position: absolute;
+  top: 52px;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #ddd;
+  z-index: 9999;
+  background: #fff;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+
+  li {
+    @include fontsize(12);
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+
+    a {
+      padding: 16px;
+      display: block;
+      width: 100%;
+    }
+  }
 }
 
 .p-header__menu__btn {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 14px;
+  left: 14px;
   cursor: pointer;
+}
+
+.p-header__count {
+  @include fontsize(10);
+  font-weight: bold;
+  color: $darkgray9B;
+}
+
+.p-header__logo__cap {
+  display: block;
 }
 
 
@@ -424,7 +459,7 @@ common
   margin-top: 24px;
   margin-bottom: 24px;
   padding: 24px;
-  border: 1px solid #eeeeee;
+  border: 1px solid $darkgrayEE;
   border-radius: 8px;
   background: #ffffff;
 }
@@ -444,19 +479,17 @@ common
 }
 
 .p-article__bottom {
-  margin-top: 8px;
+  // margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
 
   li {
-    display: inline-block;
-    border-left: 1px solid gray;
-    margin-left: 4px;
-    padding-left: 8px;
-
-    &:first-child {
-      border-left: none;
-      margin-left: 0;
-      padding-left: 0;
-    }
+    width: 49%;
+    text-align: center;
   }
 }
 
@@ -492,7 +525,7 @@ common
   line-height: 1.3;
   position: relative;
   width: 20%;
-  // background: #eeeeee;
+  // background: $darkgrayEE;
   @include fontsize(12);
   font-weight: bold;
   width: 100%;
@@ -529,7 +562,7 @@ common
     color: #000000;
     margin-right: 8px;
     margin-bottom: 16px;
-    background: #eee;
+    background: $darkgrayEE;
     display: inline-block;
     position: relative;
     padding: 8px;
@@ -658,11 +691,82 @@ component
 }
 
 .c-box {
-  border: 1px solid #eee;
+  border: 1px solid $darkgrayEE;
   background: #fff;
   padding: 24px;
   border-radius: 8px;
+  margin-bottom: 24px;
+
+  &__id {
+    color: $darkgray9B;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  &__title {
+    @include fontsize(14);
+    font-weight: bold;
+    letter-spacing: 0.02em;
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-warp: wrap;
+    margin-top: 16px;
+  }
+
+  &__image {
+    width: 50%;
+    padding: 0 16px 0 0;
+  }
+
+  &__table {
+    width: 50%;
+    display: table;
+    border: 1px solid $darkgrayEE;
+    width: 100%;
+    @include fontsize(12);
+
+    &__headline {
+      display: block;
+      border-bottom: 1px solid $darkgrayEE;
+      background:transparent url('image.png') left top no-repeat;
+      width: 100%;
+      padding: 8px;
+    }
+
+    &__data {
+      display: block;
+      width: 100%;
+      padding: 8px;
+    }
+  }
+  &__text {
+    margin-top: 16px;
+    @include fontsize(14);
+  }
+
+  &__quote {
+    margin-top: 16px;
+    @include fontsize(12);
+
+    &__title {
+      @include fontsize(14);
+      font-weight: bold;
+    }
+
+    &__list {
+      margin-top: 8px;
+
+      a {
+        color: #1d3994;
+        text-decoration: underline;
+      }
+    }
+  }
 }
+
 
 .c-headline {
   font-weight: bold;
@@ -712,10 +816,6 @@ component
   line-height: 1.4;
 }
 
-.c-talk__url {
-  display: none;
-}
-
 .c-sns--facebook {
   color: #ffffff;
   background: #1f6aba;
@@ -741,13 +841,14 @@ component
   text-align: center;
 
   a,
-  input {
+  input,
+  .c-button__sns__text {
     width: 100%;
     padding: 16px 0;
     display: block;
     background: #4696d4;
     // background-image: linear-gradient(100deg, #1e7dde, #00c4c4);
-    box-shadow: 0 9px 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.1);
     border-radius: 100px;
     font-weight: bold;
     color: #fff;
@@ -761,6 +862,34 @@ component
     background: #d0d0d0;
   }
 }
+
+.c-button--sns {
+  @extend .c-button;
+  cursor: pointer;
+}
+
+
+.c-button--primary {
+  @extend .c-button;
+
+  a {
+    background: $darkgray31;
+  }
+}
+
+.c-button--gray {
+  @extend .c-button;
+
+  a {
+    background: $darkgray9B;
+  }
+}
+
+.c-button__sns__title,
+.c-button__sns__link {
+  display: none;
+}
+
 
 .c-textlink {
   border: 1px solid #000;

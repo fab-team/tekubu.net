@@ -2,8 +2,8 @@ class HomeController < ApplicationController
   def index
     # @books = Book.all.includes(:events).paginate(page: params[:page], per_page: 10)
     # @books = Event.where.not(title: nil).includes(:events).paginate(page: params[:page], per_page: 10)
-    @books = Book.all
     # @tags = Event.all_tags
+    @books = Book.where.not(title: nil).paginate(page: params[:page], per_page: 10)
     @tags = Book.all_tags
   end
 

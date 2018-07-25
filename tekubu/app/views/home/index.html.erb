@@ -1,15 +1,71 @@
 <% if @books.present? %>
 <% @books.each do |book| %>
 <article class="p-article c-box">
-	<div class="c-text--small" style="color: gray;margin-bottom: 8px;font-weight: bold">POST ID&nbsp;/&nbsp;<%= book.id %></div>
-	<h2 style="font-size: 1.4rem;font-weight: bold;letter-spacing: 0.02em;"><a href="<%= book.detailpageurl %>" target="_blank"><%= book.title %></a></h2>
+	<div class="c-text--small c-box__id">POST ID&nbsp;/&nbsp;<%= book.id %></div>
+	<h2 class="c-box__title">
+		<a href="<%= book.detailpageurl %>" target="_blank"><%= book.title %></a>
+	</h2>
 
-	<p class="c-talk__name"><%= book.title %></p>
-	<p class="c-talk__name"><%= book.dictionary_list %></p>
+	<div class="c-box__content">
+		<div class="c-box__image">
+			<img src="<%= book.image %>" alt="<%= book.title %>">
+		</div>
+		<dl class="c-box__table">
+			<% if book.author.present? %>
+			<dt class="c-box__table__headline">著者</dt>
+			<dd class="c-box__table__data"><%= book.author %></dd>
+			<% end %>
+			<% if book.publicationdate.present? %>
+			<dt class="c-box__table__headline">発売日</dt>
+			<dd class="c-box__table__data"><%= book.publicationdate %></dd>
+			<% end %>
+			<% if book.language.present? %>
+			<dt class="c-box__table__headline">言語</dt>
+			<dd class="c-box__table__data"><%= book.language %></dd>
+			<% end %>
+		</dl>
+	</div>
+
+	<% if book.content.present? %>
+	<p class="c-box__text">
+		<%= truncate(book.content, length: 120) %>
+	</p>
+	<% end %>
+
+	<div class="c-button--sns js-sharebtn">
+		<div class="c-button__sns__text"><i class="fab fa-twitter"></i> みんなにオススメする</div>
+		<p class="c-button__sns__title"><%= book.title %></p>
+		<p class="c-button__sns__link"><%= url_for(book) %></p>
+	</div>
+
+	<div class="c-box__quote">
+		<h2 class="c-box__quote__title">掲載されているQiita記事（<%= book.dictionary.count %> 件）</h2>
+		<ul class="c-box__quote__list">
+			<% if book.dictionary.size >= 5 %>
+
+			<% book.dictionary.first(5).each do |item| %>
+			<li>
+				<a href="<%= item.url %>" target="_blank"><%= item.name %></a>
+			</li>
+			<% end %>
+			<%= link_to "もっと見る", book %>
+			<% else %>
+			<% book.dictionary.each do |item| %>
+			<li>
+				<a href="<%= item.url %>" target="_blank"><%= item.name %></a>
+			</li>
+			<% end %>
+
+			<% end %>
+		</ul>
+	</div>
 
 	<ul class="p-article__bottom c-text--midium">
-		<li>
-			<%= link_to "詳細へ", book %>
+		<li class="c-button--primary">
+			<a href="<%= book.detailpageurl %>" target="_blank">Amazon</a>
+		</li>
+		<li class="c-button--gray">
+			<%= link_to "詳細", book %>
 		</li>
 	</ul>
 
