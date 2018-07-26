@@ -2,7 +2,7 @@
 // You can generate new channels where WebSocket features live using the `rails generate channel` command.
 //
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
 	$('.p-header__menu__btn').on('click', function (event) {
 		if (!$(this).hasClass('is_active')) {
 			$(this).addClass('is_active');
