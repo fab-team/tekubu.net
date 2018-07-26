@@ -16,6 +16,7 @@ module MetaTaggable
     description = base[:description]
     title = t("meta_tags.titles.#{controller_name}.#{action_name}", default: '')
     image = image_url('ogp.png')
+    image = options[:image].presence || image_url('image.png')
 
     defaults = {
       site: site,
@@ -32,8 +33,8 @@ module MetaTaggable
         image: image
       },
       twitter: {
-        card: 'summary',
-        site: '@simpliejp',
+        card: 'summary_large_image',
+        site: '@Tekubu_net',
         title: title.presence || site,
         description: description,
         image: image
