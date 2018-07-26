@@ -21,7 +21,11 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @tags = Book.all_tags
-    prepare_meta_tags(title: @book.title,description: @book.title + "の紹介ページ。Qiitaの投稿記事に紹介されている本の情報をまとめて紹介するサイト「Tekubu」（テクブ）。プログラミングに関する知識を記録・共有するためのサービスQiitaに投稿している記事数をカウントしておすすめの本をご紹介します。" )
+    prepare_meta_tags(
+      title: @book.title,
+      description: @book.title + "の紹介ページ。Qiitaの投稿記事に紹介されている本の情報をまとめて紹介するサイト「Tekubu」（テクブ）。プログラミングに関する知識を記録・共有するためのサービスQiitaに投稿している記事数をカウントしておすすめの本をご紹介します。",
+      twitter: { image: @book.image }
+      )
   end
 
   # 新規登録フォーム
