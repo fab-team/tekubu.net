@@ -24,7 +24,16 @@ class BooksController < ApplicationController
     prepare_meta_tags(
       title: @book.title,
       description: @book.title + "の紹介ページ。Qiitaの投稿記事に紹介されている本の情報をまとめて紹介するサイト「Tekubu」（テクブ）。プログラミングに関する知識を記録・共有するためのサービスQiitaに投稿している記事数をカウントしておすすめの本をご紹介します。",
-      twitter: { image: @book.image }
+      og: {
+      title: @book.title + " | Qiitaの投稿記事に紹介されている本の情報をまとめて紹介するサイト｜Tekubu（テクブ）",
+        description: @book.title + "の紹介ページ。Qiitaの投稿記事に紹介されている本の情報をまとめて紹介するサイト「Tekubu」（テクブ）。プログラミングに関する知識を記録・共有するためのサービスQiitaに投稿している記事数をカウントしておすすめの本をご紹介します。",
+        image: @book.image
+      },
+      twitter: {
+      title: @book.title + " | Qiitaの投稿記事に紹介されている本の情報をまとめて紹介するサイト｜Tekubu（テクブ）",
+        description: @book.title + "の紹介ページ。Qiitaの投稿記事に紹介されている本の情報をまとめて紹介するサイト「Tekubu」（テクブ）。プログラミングに関する知識を記録・共有するためのサービスQiitaに投稿している記事数をカウントしておすすめの本をご紹介します。",
+        image: @book.image
+      }
       )
   end
 

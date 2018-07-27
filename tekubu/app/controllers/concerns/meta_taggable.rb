@@ -16,7 +16,7 @@ module MetaTaggable
     description = base[:description]
     title = t("meta_tags.titles.#{controller_name}.#{action_name}", default: '')
     image = image_url('ogp.png')
-    image = options[:image].presence || image_url('image.png')
+    image = options[:image].presence || image_url('ogp.png')
 
     defaults = {
       site: site,
@@ -26,7 +26,7 @@ module MetaTaggable
       canonical: request.url,
       og: {
         url: request.url,
-        title: title,
+        title: title.presence || site,
         description: description,
         site_name: site,
         type: 'article',
